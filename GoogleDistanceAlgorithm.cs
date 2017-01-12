@@ -5,10 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wer.Core.HelperModel
+namespace MontePasa.Core.HelperModel
 {
     public class GoogleDistance
     {
+        // Verilen bir noktanın istenilen bölgenin içinde olup olmadığını kontrol eden algoritmadır
+        // Google haritada üzerinde enlem ve boylamı verilen bir noktanın enlemi Lat1, 
+        // boylamı Lon1 olsun, kontrol edilecek bölgenin enlemi lat2, boylamı Lon2 ve bölgenin yarıçapı radius olsun
+        // Eğer noktamız bu bölgenin içindeyse fonksiyonumuz true dönecektir, değilse false dönecektir 
         public static bool Distance(double lat1, double lon1, double lat2, double lon2, int radius)
         {
             var R = 6371d;
@@ -30,7 +34,9 @@ namespace Wer.Core.HelperModel
                 return false;
             }
         }
-       
+       // Yarıçapı ve harita bilgileri verilen (enlem ve boylam) bölgenin içinden rastgele bir konum üreten fonksiyondur.
+       // Bölgenin enlemi latitude, boylamı longitude, yarı çapı radius için 
+       //Geri dönecek değerler { Latitude: "", Longitude: ""} formatında olacaktır 
         public static GeoLocation ReproduceLocation(string latitude, string longitude, int radius)
         {
             double x0, y0;
